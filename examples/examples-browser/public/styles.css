@@ -67,10 +67,15 @@
 
 #overlay, .overlay {
   position: absolute;
-  top: 0;
+  top: 400px;
   left: 0;
 }
 
 #facesContainer canvas {
   margin: 10px;
+}
+
+#inputVideo {
+  position: absolute;
+  /* top: -479px; */
 }

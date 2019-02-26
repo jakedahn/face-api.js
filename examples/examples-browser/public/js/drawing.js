@@ -22,11 +22,15 @@ function drawLandmarks(dimensions, canvas, results, withBoxes = true) {
     faceapi.drawDetection(canvas, resizedResults.map(det => det.detection))
   }
 
+  // NOTE(jake): this is where drawing magic happens
+  // also check out the drawLandmarks function in face-api.js
   const faceLandmarks = resizedResults.map(det => det.landmarks)
+  // NOTE(jake): toggle me for console.log output of points
+  // console.log('faceLandmarks: ', faceLandmarks)
   const drawLandmarksOptions = {
     lineWidth: 2,
-    drawLines: true,
-    color: 'green'
+    // drawLines: true,
+    color: 'red'
   }
   faceapi.drawLandmarks(canvas, faceLandmarks, drawLandmarksOptions)
 }
