@@ -15,7 +15,8 @@
     <video onplay="onPlay(this)" id="inputVideo" autoplay muted></video>
 
   </div>
-    <canvas id="overlay" />
+  <canvas id="landmarks"></canvas>
+  <canvas id="expressions"></canvas>
 </body>
 
   <script>
@@ -45,11 +46,14 @@
       const ts = Date.now()
 
       const result = await faceapi.detectSingleFace(videoEl, options).withFaceLandmarks()
+      const expressions = await faceapi.detectSingleFace(videoEl, options).withFaceExpressions()
 
       updateTimeStats(Date.now() - ts)
 
       if (result) {
-        drawLandmarks(videoEl, $('#overlay').get(0), [result], withBoxes)
+        drawLandmarks(videoEl, $('#landmarks').get(0), [result], withBoxes)
+        drawExpressions(videoEl, $('#expressions').get(0), [expressions], withBoxes)
+// dimensions, canvas, results, thresh, withBoxes = true
       }
 
       setTimeout(() => onPlay())
@@ -59,6 +63,7 @@
       // load face detection and face landmark models
       await changeFaceDetector(TINY_FACE_DETECTOR)
       await faceapi.loadFaceLandmarkModel('/')
+      await faceapi.loadFaceExpressionModel('/')
       changeInputSize(224)
 
       // try to access users webcam and stream the images

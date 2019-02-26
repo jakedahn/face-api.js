@@ -65,11 +65,18 @@
   margin-bottom: 10px;
 }
 
-#overlay, .overlay {
+#landmarks, .landmarks {
   position: absolute;
   top: 400px;
   left: 0;
 }
+
+#expressions, .expressions {
+  position: absolute;
+  top: 400px;
+  left: 100px;
+}
+
 
 #facesContainer canvas {
   margin: 10px;

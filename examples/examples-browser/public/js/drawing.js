@@ -38,9 +38,9 @@ function drawLandmarks(dimensions, canvas, results, withBoxes = true) {
 function drawExpressions(dimensions, canvas, results, thresh, withBoxes = true) {
   const resizedResults = resizeCanvasAndResults(dimensions, canvas, results)
 
-  if (withBoxes) {
-    faceapi.drawDetection(canvas, resizedResults.map(det => det.detection), { withScore: false })
-  }
+  // if (withBoxes) {
+  //   faceapi.drawDetection(canvas, resizedResults.map(det => det.detection), { withScore: false })
+  // }
 
   faceapi.drawFaceExpressions(canvas, resizedResults.map(({ detection, expressions }) => ({ position: detection.box, expressions })))
 }
